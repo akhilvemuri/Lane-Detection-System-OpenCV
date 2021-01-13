@@ -10,3 +10,4 @@ OpenCV image processing algorithm for lane & vehicle detection in autonomous car
 * Filled rectangular area between lines (Done)
 * Transform captured frame into non-distorted frame using cv2.undistort() (TODO)
 * Vehicle & traffic sign detection (TODO - train ML model to do this)
+* Lane detection for side mirrors (TODO)
