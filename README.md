@@ -94,7 +94,7 @@ Unfortunately, this procedure won't work if we want to detect all lanes. I've at
 I'll keep this issue as TODO for now as fixing it could help identify lane changes or oncoming traffic in other lanes.
 
 # Results
-This lane detection system appears to be pretty accurate and successful in objectifying where the driver's current lane resides. I tested it across various dashcam footages, and it produced results similar to those of the actual road markings. There are certain conditions that will affect it, however.
+This lane detection system appears to be pretty accurate and successful in identifying where the driver-side lane is. I tested it across various dashcam footages, and it produced results similar to those of the actual road markings. There are certain conditions that will affect it, however.
 
 * Rain, fog, hail, snow
 * Unpaved / fading road markings
