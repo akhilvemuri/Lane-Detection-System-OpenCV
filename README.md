@@ -16,13 +16,13 @@ OpenCV image processing pipeline for lane & vehicle detection in autonomous cars
 In order to clarify our image, we can automatically adjust the brightness using contrast optimization and histogram clipping. This algorithm will then generate α and β automatically based on the clip percent (can increase target brightness by increasing percent).
 
 <p align="center">
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BLUE (pre-adjustment) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ORANGE (post-adjustment)<br>
-  <img src="./assets/adjustment_hist.png" width="45%">
+  <img src="./assets/frame_original.png" width="45%">
+  <img src="./assets/frame_bright.png" width="45%">
 </p>
 
 <p align="center">
-  <img src="./assets/frame_original.png" width="45%">
-  <img src="./assets/frame_bright.png" width="45%">
+  <img src="./assets/adjustment_hist.png" width="45%"><br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; BLUE (pre-adjustment) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ORANGE (post-adjustment)
 </p>
 
 The lane lines are now much more prevalent compared to how blended-in they were previously. This should make it easier later on for canny edge detection to recognize the lines.
