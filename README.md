@@ -2,7 +2,7 @@
 
 OpenCV image processing pipeline for lane & vehicle detection in autonomous cars
 
-# Image Processing Pipeline
+## Image Processing Pipeline
 
 1) Add auto adjustments (auto brightness & contrast) to eliminate color irregularities
 2) Convert to grayscale and isolate yellow & white colors
@@ -11,7 +11,7 @@ OpenCV image processing pipeline for lane & vehicle detection in autonomous cars
 5) Run probabilistic hough line transform
 6) Average left-lane lines and right-lane lines into 1 cohesive lane
 
-# Auto Adjustments
+## Auto Adjustments
 
 In order to clarify our image, we can automatically adjust the brightness using contrast optimization and histogram clipping. This algorithm will then generate α and β automatically based on the clip percent (can increase target brightness by increasing percent).
 
@@ -27,7 +27,7 @@ In order to clarify our image, we can automatically adjust the brightness using 
 
 The lane lines are now much more prevalent compared to how blended-in they were previously. This should make it easier later on for canny edge detection to recognize the lines.
 
-# Isolate Yellow & White
+## Isolate Yellow & White
 
 Converting from RGB to HSV makes yellow and white shades easier to detect. By doing this, we can simply isolate the yellow and white road markings from the rest of the image (any copious range of colors that covers both light and dark shades should work).
 
@@ -39,7 +39,7 @@ Now, we convert the original frame to grayscale and combine it with the new yell
 
 The lane lines on this road are unfortunately quite faded, and therefore aren't captured very well by masking procedure. We will make up for this later.
 
-# Canny Edge Detection
+## Canny Edge Detection
 
 We're now ready to run our edge detector. This algorithm is frankly quite brilliant. It was discovered by John Canny (now a professor in the CS department at UC Berkeley, GO BEARS!!), and it's pretty much a step-up from the Sobel Edge Detector.
 
@@ -51,7 +51,7 @@ We can simply run ```cv2.Canny(gray_img_mask, 5, 15)``` with a 1 : 3 low to high
   <img src="./assets/canny_edges.png" width="45%">
 </p>
 
-# Region of Interest (ROI)
+## Region of Interest (ROI)
 
 Now, we want to cut out a region of interest where we can analyze a portion of our frame. This will be a trapezoidal polygon that mimics a person's FOV when looking out the front windshield.
 
@@ -63,7 +63,7 @@ Now, we want to cut out a region of interest where we can analyze a portion of o
 
 This shape has to be changed according to the height and depth of the vehicle. In an actual car, a LiDAR sensor would be used to achieve greater accuracy, but for our project, we have to manually alter these values since we are using a dashcam playback.
 
-# Probabilistic Hough Lines
+## Probabilistic Hough Lines
 
 Hough space is tricky concept to grasp. However, the most important thing to understand is that points in XY space correspond to lines in Hough space. We consider pixels as points in XY space, so we can transform them to lines in Hough space. The point where these lines intersect is then translated to a line in XY space. Probabilistic hough lines are an optimized version of the standard hough lines that simply highlight edges of specific length rather than running off to infinity.
 
@@ -73,7 +73,7 @@ We can use this algorithm to highlight the lines in our canny-edged region of in
   <img src="./assets/hough_lines.png" width="45%">
 </p>
 
-# 2 Master Averages
+## 2 Master Averages
 
 Finally, we want to make a solid line that emulates the road markings on both sides of the lane. All lines with ```slope < 0``` belong to the left side, while those with ```slope > 0``` belong to the right. Also, to ignore any extraneous (horizontal) lines that may have been picked up due to shadows or other obstacles, we should only include lines with ```abs(slope) > threshold```. This threshold value will change as per the ROI mask.
 
@@ -93,7 +93,7 @@ Unfortunately, this procedure won't work if we want to detect all lanes. I've at
 
 I'll keep this issue as TODO for now as fixing it could help identify lane changes or oncoming traffic in other lanes.
 
-# Results
+## Results
 This lane detection system appears to be pretty accurate and successful in identifying where the driver-side lane is. I tested it across various dashcam footages, and it produced results similar to those of the actual road markings. There are certain conditions that will affect it, however.
 
 * Rain, fog, hail, snow
@@ -103,7 +103,7 @@ This lane detection system appears to be pretty accurate and successful in ident
 
 Given the correct sensors and equipment in an autonomous vehicle, it's possible to find a workaround, but these problems can be quite difficult to solve when I only have access to dashcam footage.
 
-# Features to Complete
+## Features to Complete
 
 * Modified frame for canny edge detection and hough lines (Done)
 * Cut areas outside region of interest to remove noise (Done - might vary per size of car)
