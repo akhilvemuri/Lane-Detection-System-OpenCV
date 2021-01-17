@@ -73,7 +73,7 @@ We can use this algorithm to highlight the lines in our canny-edged region of in
   <img src="./assets/hough_lines.png" width="45%">
 </p>
 
-## 2 Master Averages
+## Two Master Average Lines
 
 Finally, we want to make a solid line that emulates the road markings on both sides of the lane. All lines with ```slope < 0``` belong to the left side, while those with ```slope > 0``` belong to the right. Also, to ignore any extraneous (horizontal) lines that may have been picked up due to shadows or other obstacles, we should only include lines with ```abs(slope) > threshold```. This threshold value will change as per the ROI mask.
 
@@ -111,4 +111,4 @@ Given the correct sensors and equipment in an autonomous vehicle, it's possible 
 * Filled rectangular area between lines (Done)
 * Group according to distance from starting point (TODO)
 * Make lines exponential instead of linear for extra lane accuracy (TODO - might not do this)
-* Vehicle & traffic sign detection (TODO - train CNN model for this)
+* Vehicle & traffic sign detection (TODO - deep learning approach; train CNN model)
