@@ -110,5 +110,5 @@ Given the correct sensors and equipment in an autonomous vehicle, it's possible 
 * Created two averaged master lines per frame (Done)
 * Filled rectangular area between lines (Done)
 * Group according to distance from starting point (TODO)
-* Make lines exponential instead of linear for extra lane accuracy (TODO - might not do this)
+* Make lines exponential instead of linear for extra lane accuracy
 * Vehicle & traffic sign detection (TODO - deep learning approach; train CNN model)
